@@ -1,0 +1,39 @@
+name: Deploy Hugo Portfolio to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true # Fetch Hugo themes
+
+      # 2. Setup Hugo
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      # 3. Build the site
+      - name: Build Hugo site
+        run: hugo --minify
+
+      # 4. Deploy to VPS via rsync
+      - name: Deploy to VPS
+        uses: easingthemes/ssh-deploy@v4.1.9
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-avz --delete"
+          SOURCE: "public/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          TARGET: ${{ secrets.TARGET_DIR }}
