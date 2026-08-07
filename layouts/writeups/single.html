@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="container">
+  <article class="content-card">
+    <header>
+      <h1 class="card-title" style="color: var(--accent);">{{ .Title }}</h1>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        📅 {{ .Date.Format "2006-01-02" }}
+        {{ if .Params.tags }} | Tags: {{ range .Params.tags }}<span style="color: var(--accent);">#{{ . }}</span> {{ end }}{{ end }}
+      </p>
+      
+      {{ if .Params.github }}
+      <div style="margin: 1.5rem 0;">
+        <a href="{{ .Params.github }}" class="btn" target="_blank" rel="noopener noreferrer">
+          🐙 View on GitHub
+        </a>
+      </div>
+      {{ end }}
+    </header>
+    
+    <div class="content" style="margin-top: 2rem;">
+      {{ .Content }}
+    </div>
+    
+    {{ if .Params.github }}
+    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+      <a href="{{ .Params.github }}" class="btn" target="_blank" rel="noopener noreferrer">
+        🐙 Star this project on GitHub
+      </a>
+    </footer>
+    {{ end }}
+  </article>
+</div>
+{{ end }}
