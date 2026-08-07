@@ -64,13 +64,20 @@
     <h2 class="card-title">> Bug Bounty Writeups</h2>
     <p>Real vulnerabilities discovered and responsibly disclosed:</p>
     
-    {{ range where .Site.RegularPages "Section" "writeups" }}
+    {{ range first 3 (where (where .Site.RegularPages "Section" "writeups") "Draft" false) }}
     <div class="content-card" style="margin-top: 1rem;">
       <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Summary }}</p>
-      <a href="{{ .Permalink }}" class="btn">Read Full Report →</a>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.5rem;">
+        📅 {{ .Date.Format "2006-01-02" }}
+      </p>
+      <p>{{ .Summary | truncate 40 "..." }}</p>
+      <a href="{{ .Permalink }}" class="btn">Read Full Report &rarr;</a>
     </div>
     {{ end }}
+
+    <div style="margin-top: 1.5rem; text-align: right;">
+      <a href="/writeups/" class="btn">View All Writeups &rarr;</a>
+    </div>
   </section>
 
   <!-- Tools Section -->
@@ -78,16 +85,24 @@
     <h2 class="card-title">> Custom Tools & Scripts</h2>
     <p>Open-source tools I've built for bug bounty hunting:</p>
     
-    {{ range where .Site.RegularPages "Section" "tools" }}
+    {{ range first 3 (where (where .Site.RegularPages "Section" "tools") "Draft" false) }}
     <div class="content-card" style="margin-top: 1rem;">
       <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Summary }}</p>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.5rem;">
+        📅 {{ .Date.Format "2006-01-02" }}
+        {{ if .Params.tags }} | {{ range .Params.tags }}<span style="color: var(--accent);">#{{ . }}</span> {{ end }}{{ end }}
+      </p>
+      <p>{{ .Summary | truncate 30 "..." }}</p>
       <a href="{{ .Permalink }}" class="btn">View Details</a>
       {{ if .Params.github }}
         <a href="{{ .Params.github }}" class="btn" target="_blank">GitHub Repo</a>
       {{ end }}
     </div>
     {{ end }}
+
+    <div style="margin-top: 1.5rem; text-align: right;">
+      <a href="/tools/" class="btn">View All Tools &rarr;</a>
+    </div>
   </section>
 
   <!-- Blog Section -->
@@ -95,15 +110,20 @@
     <h2 class="card-title">> Security Blog & Tutorials</h2>
     <p>Guides, how-tos, and security research:</p>
     
-    {{ range where .Site.RegularPages "Section" "blog" }}
+    {{ range first 3 (where (where .Site.RegularPages "Section" "blog") "Draft" false) }}
     <div class="content-card" style="margin-top: 1rem;">
       <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Summary }}</p>
-      <small style="color: var(--text-secondary);">{{ .Date.Format "2006-01-02" }} | {{ .ReadingTime }} min read</small>
-      <br>
-      <a href="{{ .Permalink }}" class="btn" style="margin-top: 0.5rem;">Read Article →</a>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.5rem;">
+        📅 {{ .Date.Format "2006-01-02" }} | ⏱️ {{ .ReadingTime }} min read
+      </p>
+      <p>{{ .Summary | truncate 30 "..." }}</p>
+      <a href="{{ .Permalink }}" class="btn" style="margin-top: 0.5rem;">Read Article &rarr;</a>
     </div>
     {{ end }}
+
+    <div style="margin-top: 1.5rem; text-align: right;">
+      <a href="/blog/" class="btn">View All Articles &rarr;</a>
+    </div>
   </section>
 
   <!-- Contact Section -->

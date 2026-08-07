@@ -1,7 +1,7 @@
 ---
 title: "myDex - Decentralized Exchange"
-date: 2026-08-10
-draft: false
+date: 2026-08-07
+draft: flase
 tags:
   - "Solidity"
   - "React"
@@ -43,14 +43,6 @@ As I transition into Application Security, this project serves as a living lab f
 - **Access Control**: Strict `Ownable` and role-based permissions for administrative functions.
 - **Integer Overflow/Underflow**: Leveraging Solidity 0.8.x+ built-in checks or SafeMath for older versions.
 - **Front-Running Mitigation**: Studying slippage tolerance and commit-reveal schemes for order execution.
-
----
-
-## 🚀 Future Enhancements
-
-- [ ] Integrate Chainlink Price Feeds for accurate, decentralized oracle pricing.
-- [ ] Implement a comprehensive Slither or Foundry fuzzing test suite.
-- [ ] Add a detailed post-mortem/security audit report of the smart contracts.
 
 ---
 

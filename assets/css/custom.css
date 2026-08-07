@@ -431,3 +431,30 @@ nav.menu a:hover {
     color: #64ffda !important;
     text-decoration: underline;
 }
+
+/* =========================================
+   FINAL POLISH: View All Buttons & Cards
+   ========================================= */
+
+/* Ensure the 'View All' buttons sit nicely on the right */
+#writeups-section div[style*="text-align: right"],
+#tools-section div[style*="text-align: right"],
+#blog-section div[style*="text-align: right"] {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color); /* Adds a subtle separator line */
+}
+
+/* Make the cards inside sections look consistent */
+.content-card .content-card {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.content-card .content-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
