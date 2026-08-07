@@ -15,13 +15,12 @@
         <div class="terminal-input-line">
           <span class="terminal-prompt">guest@0xurahara:~$</span>
           <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false">
-          
         </div>
       </div>
     </div>
   </section>
 
-    <!-- About Section -->
+  <!-- About Section -->
   <section id="about-section" class="content-card">
     <h2 class="card-title">> About Me</h2>
     <p>
@@ -29,7 +28,7 @@
       With years of experience building decentralized applications (DEXs, NFT Marketplaces) and REST APIs, I know how robust systems are architected.
     </p>
     <p>
-      My journey into security started with a simple realization: to build truly secure smart contracts and web apps, I needed to understand exactly how they break. Today, I am actively hunting vulnerabilities, mastering the OWASP Top 10 and building my own custom offensive infrastructure to understand the mechanics behind the exploits.
+      My journey into security started with a simple realization: to build truly secure smart contracts and web apps, I needed to understand exactly how they break. Today, I am actively hunting vulnerabilities, mastering the OWASP Top 10, and building my own custom offensive infrastructure to understand the mechanics behind the exploits.
     </p>
     
     <div class="stats-grid">
@@ -84,7 +83,9 @@
       <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
       <p>{{ .Summary }}</p>
       <a href="{{ .Permalink }}" class="btn">View Details</a>
-      <a href="https://github.com/0xurahara" class="btn" target="_blank">GitHub</a>
+      {{ if .Params.github }}
+        <a href="{{ .Params.github }}" class="btn" target="_blank">GitHub Repo</a>
+      {{ end }}
     </div>
     {{ end }}
   </section>
@@ -105,7 +106,7 @@
     {{ end }}
   </section>
 
-    <!-- Contact Section -->
+  <!-- Contact Section -->
   <section id="contact-section" class="content-card">
     <h2 class="card-title">> Contact & Secure Comms</h2>
     <p>Prefer encrypted communication for vulnerability reports. Response time: 24-48h.</p>
@@ -115,7 +116,6 @@
       
       <p><strong>PGP Fingerprint:</strong></p>
       <code style="background: var(--bg-tertiary); padding: 0.5rem; border-radius: 4px; display: block; word-break: break-all; color: var(--accent); font-size: 0.9rem;">
-        <!-- PASTE YOUR ACTUAL FINGERPRINT HERE -->
         234C 1BE0 012D 804E F4A7  930A 77B3 9E1E 68A0 0601
       </code>
       
