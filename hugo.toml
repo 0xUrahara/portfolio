@@ -1,0 +1,58 @@
+baseURL = "https://0xurahara.com/"
+locale = "en-us"
+title = "0xurahara | Security Researcher"
+theme = "terminal"
+
+[params]
+  showMenuItems = 5
+  fullWidthTheme = false
+  centerTheme = true
+  
+  # Custom CSS
+  customCSS = ["css/custom.css"]
+  
+  # Social links
+  github = "0xurahara"
+  linkedin = "in/0xurahara"
+  email = "security@0xurahara.com"
+
+  # Fixed Twitter structure (This fixes your error)
+  [params.twitter]
+    site = "@0xurahara"
+    creator = "@0xurahara"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "about"
+    url = "#about-section"
+    weight = 1
+    
+  [[menu.main]]
+    identifier = "writeups"
+    name = "writeups"
+    url = "#writeups-section"
+    weight = 2
+    
+  [[menu.main]]
+    identifier = "tools"
+    name = "tools"
+    url = "#tools-section"
+    weight = 3
+    
+  [[menu.main]]
+    identifier = "blog"
+    name = "blog"
+    url = "#blog-section"
+    weight = 4
+    
+  [[menu.main]]
+    identifier = "contact"
+    name = "contact"
+    url = "#contact-section"
+    weight = 5
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false

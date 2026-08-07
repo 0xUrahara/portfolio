@@ -1,0 +1,139 @@
+{{ define "main" }}
+<div class="container">
+  
+  <!-- Hero Section with Interactive Terminal -->
+  <section id="hero-section">
+    <div class="terminal-container">
+      <div class="terminal-header">
+        <div class="terminal-dot dot-red"></div>
+        <div class="terminal-dot dot-yellow"></div>
+        <div class="terminal-dot dot-green"></div>
+        <div class="terminal-title">guest@0xurahara:~</div>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div id="terminal-output" class="terminal-output"></div>
+        <div class="terminal-input-line">
+          <span class="terminal-prompt">guest@0xurahara:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about-section" class="content-card">
+    <h2 class="card-title">> About Me</h2>
+    <p>
+      I'm <strong>0xurahara</strong>, a security researcher and bug bounty hunter specializing in 
+      web application security, out-of-band (OOB) testing, and infrastructure hardening.
+    </p>
+    <p>
+      My journey started with curiosity about how systems break. Today, I hunt vulnerabilities 
+      and build secure architectures, focusing on blind XSS, SSRF, XXE, and custom tooling.
+    </p>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Experience</div>
+        <div class="stat-value">2+ Years</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Focus</div>
+        <div class="stat-value">Web Security</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Methodology</div>
+        <div class="stat-value">OSINT + OOB</div>
+      </div>
+    </div>
+    
+    <h3 class="section-header">Core Stack</h3>
+    <div class="tech-stack">
+      <span class="tech-tag">Go</span>
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Docker</span>
+      <span class="tech-tag">Kubernetes</span>
+      <span class="tech-tag">Burp Suite</span>
+      <span class="tech-tag">Nuclei</span>
+      <span class="tech-tag">AWS</span>
+      <span class="tech-tag">Terraform</span>
+    </div>
+  </section>
+
+  <!-- Writeups Section -->
+  <section id="writeups-section" class="content-card">
+    <h2 class="card-title">> Bug Bounty Writeups</h2>
+    <p>Real vulnerabilities discovered and responsibly disclosed:</p>
+    
+    {{ range where .Site.RegularPages "Section" "writeups" }}
+    <div class="content-card" style="margin-top: 1rem;">
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Summary }}</p>
+      <a href="{{ .Permalink }}" class="btn">Read Full Report →</a>
+    </div>
+    {{ end }}
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools-section" class="content-card">
+    <h2 class="card-title">> Custom Tools & Scripts</h2>
+    <p>Open-source tools I've built for bug bounty hunting:</p>
+    
+    {{ range where .Site.RegularPages "Section" "tools" }}
+    <div class="content-card" style="margin-top: 1rem;">
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Summary }}</p>
+      <a href="{{ .Permalink }}" class="btn">View Details</a>
+      <a href="https://github.com/0xurahara" class="btn" target="_blank">GitHub</a>
+    </div>
+    {{ end }}
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog-section" class="content-card">
+    <h2 class="card-title">> Security Blog & Tutorials</h2>
+    <p>Guides, how-tos, and security research:</p>
+    
+    {{ range where .Site.RegularPages "Section" "blog" }}
+    <div class="content-card" style="margin-top: 1rem;">
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Summary }}</p>
+      <small style="color: var(--text-secondary);">{{ .Date.Format "2006-01-02" }} | {{ .ReadingTime }} min read</small>
+      <br>
+      <a href="{{ .Permalink }}" class="btn" style="margin-top: 0.5rem;">Read Article →</a>
+    </div>
+    {{ end }}
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact-section" class="content-card">
+    <h2 class="card-title">> Contact Me</h2>
+    <p>Prefer encrypted communication. Response time: 24-48h</p>
+    
+    <div style="margin: 1.5rem 0;">
+      <p><strong>Email:</strong> <a href="mailto:security@0xurahara.com">security@0xurahara.com</a></p>
+      <p><strong>PGP Key:</strong> <code>0x... (fingerprint)</code> <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.875rem;">Copy</button></p>
+    </div>
+    
+    <h3 class="section-header">Bug Bounty Platforms</h3>
+    <div class="tech-stack">
+      <a href="https://hackerone.com/0xurahara" class="tech-tag" target="_blank">HackerOne</a>
+      <a href="https://bugcrowd.com/0xurahara" class="tech-tag" target="_blank">Bugcrowd</a>
+      <a href="https://yeswehack.com/0xurahara" class="tech-tag" target="_blank">YesWeHack</a>
+    </div>
+    
+    <h3 class="section-header">Social</h3>
+    <div class="tech-stack">
+      <a href="https://github.com/0xurahara" class="tech-tag" target="_blank">GitHub</a>
+      <a href="https://twitter.com/0xurahara" class="tech-tag" target="_blank">Twitter/X</a>
+      <a href="https://linkedin.com/in/0xurahara" class="tech-tag" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- Load Terminal Script -->
+<script src="/js/terminal.js"></script>
+
+{{ end }}
